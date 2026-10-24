@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Shared Keyboard and Mouse
+Name[pt_BR]=Teclado e mouse compartilhados
+Comment=Use one keyboard and mouse across your computers
+Comment[pt_BR]=Use um teclado e um mouse em vários computadores
+Exec=lingmo-continuityd --autostart
+TryExec=lingmo-continuityd
+Icon=input-mouse
+OnlyShowIn=Lingmo;
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

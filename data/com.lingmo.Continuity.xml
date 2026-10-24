@@ -1,0 +1,65 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+ "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<!--
+  lingmo-continuityd on the session bus: com.lingmo.Continuity, /Continuity.
+  Settings › Shared Keyboard and Mouse is its only expected client.
+  State() and StateChanged carry one JSON object:
+    enabled, role ("server" = principal, "client" = secundário), name, label,
+    fingerprint, status (off|starting|waiting|connected|connecting|noserver|
+    nodeskflow|portinuse|error), active, connectedTo, server,
+    deskflow {available, version}, lingmoShare, ports {deskflow, discovery,
+    channel}, firewall {name, ports, command}, options {clipboard, switchMode,
+    switchDelay, doubleTap, lockHotkey, switchHotkey, *Label}, self {x, y, w,
+    h, screens, active}, peers [{key, id, fingerprint, name, label, host, os,
+    paired, online, connected, role, x, y, w, h, screens, placed, isServer,
+    canPair, active}], pairing {state, label, key, code}.
+-->
+<node>
+  <interface name="com.lingmo.Continuity">
+    <method name="State">
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="SetEnabled">
+      <arg name="enabled" type="b" direction="in"/>
+    </method>
+    <method name="SetRole">
+      <arg name="role" type="s" direction="in"/>
+    </method>
+    <method name="SetLabel">
+      <arg name="label" type="s" direction="in"/>
+    </method>
+    <method name="SetOption">
+      <arg name="key" type="s" direction="in"/>
+      <arg name="value" type="s" direction="in"/>
+    </method>
+    <method name="AddPeer">
+      <arg name="address" type="s" direction="in"/>
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="Pair">
+      <arg name="key" type="s" direction="in"/>
+    </method>
+    <method name="CancelPairing"/>
+    <method name="Unpair">
+      <arg name="key" type="s" direction="in"/>
+    </method>
+    <method name="RemovePeer">
+      <arg name="key" type="s" direction="in"/>
+    </method>
+    <method name="SetPosition">
+      <arg name="key" type="s" direction="in"/>
+      <arg name="x" type="i" direction="in"/>
+      <arg name="y" type="i" direction="in"/>
+    </method>
+    <method name="SetServer">
+      <arg name="key" type="s" direction="in"/>
+    </method>
+    <method name="Discover"/>
+    <method name="Preview">
+      <arg name="what" type="s" direction="in"/>
+    </method>
+    <signal name="StateChanged">
+      <arg name="state" type="s"/>
+    </signal>
+  </interface>
+</node>

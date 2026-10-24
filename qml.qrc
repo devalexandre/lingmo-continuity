@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Overlay.qml</file>
+        <file>qml/Toast.qml</file>
+        <file>qml/FlyIn.qml</file>
+        <file>qml/PairDialog.qml</file>
+    </qresource>
+</RCC>
